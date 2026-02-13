@@ -1,0 +1,54 @@
+const User=require("../models/user.js");
+
+ 
+
+module.exports.signup=(req,res)=>{
+    res.render("users/signup.ejs");
+};
+module.exports.login=(req,res)=>{
+    res.render("users/login.ejs");
+   
+};
+module.exports.postsingup=async(req,res)=>{
+    try{
+    let {username,email,password}=req.body;
+    const newUser= new User({email,username});
+    const registerUser=await User.register(newUser,password);
+    console.log("registerUser");
+    req.login(registerUser,(err)=>{
+        if (err){
+            return next(err);
+        }
+        req.flash("success","user was registered ");
+    res.redirect("/listings")
+ 
+     
+    });
+     }catch(e){
+        req.flash("error", e.message);
+        res.redirect("/signup");
+    }
+
+};
+
+  
+
+module.exports.loginpost=async(req,res)=>{
+    req.flash("success","Welcome To The WunDerLust!! You are Logged in");
+     
+
+const redirectUrl = res.locals.redirectUrl || "/listings";
+    delete req.session.redirectUrl;
+
+    res.redirect(redirectUrl);
+};
+
+module.exports.logout=(req,res,next)=>{
+req.logout((err)=>{
+  if(err) {
+   return next(err);
+  }
+  req.flash("success","You are logged out!!");
+  res.redirect("/listings");
+});
+};

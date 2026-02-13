@@ -1,0 +1,94 @@
+ <%layout("/layouts/boilerplate")%>
+ <div class="row"> 
+  <div class="col-10 offset-1"> 
+  </br>  </br>
+    <h3>create a new listings</h3>
+    <form method="POST" action="/listings" class="needs-validation" novalidate enctype="multipart/form-data">
+      <div class="mb-3">
+  <label for="category" class="form-label">Category</label>
+
+  <select
+    id="category"
+    name="listing[category]"
+    class="form-select"
+    required
+  >
+    <option value="">-- Select Category --</option>
+    <option value="mountain">Mountains</option>
+    <option value="castles">Castles</option>
+    <option value="amazing-pools">Amazing Pools</option>
+    <option value="beach">Beach</option>
+    <option value="camping">Camping</option>
+    <option value="rooms">Rooms</option>
+    <option value="farms">Farms</option>
+  </select>
+</div>
+      <div class="mb-3"> 
+      <label for="title" class="form-label"> Title</label> </br> 
+      <input  name="listing[title]" placeholder="Enter title" type="text" class="form-control " required>
+        
+       <div class="valid-feedback">
+      Looks good!
+    </div>
+      </div> 
+      <div class="mb-3">
+        <label for="description" class="form-label">Description </label> </br> 
+       <textarea  name="listing[description]"  type="text" class="form-control" required> </textarea>
+        <div class="invalid-feedback">
+        Please Enter the Description.
+      </div>
+      </div>
+     
+        <div class="mb-3"> 
+         <labels for="image" class="form-label"> Upload Image </label></br> 
+         <input  name="listing[image]"   type="file"  class="form-control" required>
+         <div class="invalid-feedback">
+           Please Enter The Url-link of image
+         </div>
+      </div>  
+      <div class="mb-3"> 
+         <label for="price" class="form-label"> Price </label></br> 
+       <input  name="listing[price]" placeholder="Enter Price"  type="number"  class="form-control" required> 
+        <div class="invalid-feedback">
+        Please choose a price.
+      </div>
+      </div> 
+      <div class="mb-3"> 
+        <label for="location" class="form-label"> location </label></br> 
+      <input  name="listing[location]" placeholder="Enter Location" type="text"  class="form-control" required> 
+       <div class="invalid-feedback">
+        Please  Enter a  Location.
+      </div>
+    </div>
+    <divclass="mb-3"> 
+       <label for="country" class="form-label"> Country </label></br> 
+         
+      <input  name="listing[country]" placeholder="Enter Country" type="text"  class="form-control" required>
+       <div class="invalid-feedback">
+        Please Enter a Country.
+      </div>
+     </div>  
+      </div>
+    </br> 
+        <div class="col-12 offset-2">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+      <label class="form-check-label" for="invalidCheck">
+        Agree to terms and conditions
+      </label>
+      <div class="invalid-feedback">
+        You must agree before submitting.
+      </div>
+    </div>
+  </div>
+
+    </br>
+       <button class="btn btn-dark add-btn" style="display: block; margin:20px auto ; background-color:red; border: none;" > Add</button>
+        </div>
+    </form>
+
+    
+
+    </div>
+ 
+ 
